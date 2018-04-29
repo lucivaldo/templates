@@ -1,0 +1,37 @@
+<%%= form_with(model: <%= name %>, local: true) do |form| %>
+  <%% if <%= name %>.errors.any? %>
+    <div id="error_explanation">
+      <h2><%%= pluralize(<%= name %>.errors.count, "error") %> prohibited this <%= name %> from being saved:</h2>
+
+      <ul>
+      <%% <%= name %>.errors.full_messages.each do |message| %>
+        <li><%%= message %></li>
+      <%% end %>
+      </ul>
+    </div>
+  <%% end %>
+
+  <% attributes.each do |attr| %>
+  <div class='form-group'>
+  <% if attr.type == :boolean %>
+    <div class="form-check">
+      <%%= form.check_box :<%= attr.name %>, class: 'form-check-input' %>
+      <%%= form.label :<%= attr.name %>, class: 'form-check-label' %>
+    </div>
+  <% else %>
+    <%%= form.label :<%= attr.name %> %>
+    <% if attr.type == :references %>
+    # Replace :name for attribute correct
+    <%%= form.select :<%= attr.name %>_id, <%= attr.name.classify %>.pluck(:name, :id), {}, class: 'form-control' %>  
+    <% else %>
+    <%%= form.text_field :<%= attr.name %>, class: 'form-control' %>
+    <% end %>
+  <% end %>
+  </div>
+  <% end %>
+
+  <div class="actions">
+    <%%= form.submit 'Salvar', class: 'btn btn-success' %>
+    <%%= link_to 'Voltar', <%= plural_name %>_path, class: 'btn btn-warning' %>
+  </div>
+<%% end %>

@@ -1,0 +1,34 @@
+<div class="card">
+	<div class="card-header">
+		<div class="d-flex justify-content-between align-items-center">
+			<h4><%= class_name.pluralize %></h4>
+			<%%= link_to 'Novo', new_<%= name %>_path %>
+		</div>
+	</div>
+
+	<div class="card-body">
+		<table class="table">
+			<thead>
+				<tr>
+					<% attributes.each do |attr| %>
+					<th><%= attr.name.humanize %></th>
+					<% end %>
+					<th colspan="3"></th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<%% <%= class_name %>.all.each do |<%= name %>| %>
+				<tr>
+				<% attributes.each do |attr| %>
+					<td><%%= <%= name %>.<%= attr.name %> %></td>
+				<% end %>
+					<td><%%= link_to 'Exibir', <%= name %> %></td>
+					<td><%%= link_to 'Editar', edit_<%= name %>_path(<%= name %>) %></td>
+					<td><%%= link_to 'Excluir', <%= name %>, method: :delete, data: { confirm: 'Você tem certeza?' } %></td>
+				</tr>
+				<%% end %>
+			</tbody>
+		</table>
+	</div>
+</div>

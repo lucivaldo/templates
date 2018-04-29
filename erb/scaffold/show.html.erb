@@ -1,0 +1,21 @@
+<div class="card">
+	<div class="card-header">
+		<h4>Detalhe de <%= name %></h4>
+	</div>
+
+	<div class="card-body">
+		<table class="table">
+			<tbody>
+				<% attributes.each do |attr| %>
+					<tr>
+						<th><%= attr.name.humanize %></th>
+						<td><%%= @<%= name + '.' + attr.name %> %></td>
+					</tr>
+				<% end %>
+			</tbody>
+		</table>
+
+		<%%= link_to 'Editar', edit_<%= name %>_path(@<%= name %>), class: 'btn btn-info' %>
+		<%%= link_to 'Voltar', <%= plural_name %>_path, class: 'btn btn-warning' %>
+	</div>
+</div>
