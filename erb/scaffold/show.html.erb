@@ -7,10 +7,12 @@
 		<table class="table">
 			<tbody>
 				<% attributes.each do |attr| %>
+					<% if attr.type != :digest %>
 					<tr>
 						<th><%= attr.name.humanize %></th>
 						<td><%%= @<%= name + '.' + attr.name %> %></td>
 					</tr>
+					<% end %>
 				<% end %>
 			</tbody>
 		</table>
