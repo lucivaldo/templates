@@ -1,13 +1,15 @@
 <%%= form_with(model: <%= name %>, local: true) do |form| %>
   <%% if <%= name %>.errors.any? %>
     <div id="error_explanation">
-      <h2><%%= pluralize(<%= name %>.errors.count, "error") %> prohibited this <%= name %> from being saved:</h2>
-
-      <ul>
-      <%% <%= name %>.errors.full_messages.each do |message| %>
-        <li><%%= message %></li>
-      <%% end %>
-      </ul>
+      <div class="alert alert-danger" role="alert">
+        <h4 class="alert-heading">Erro ao salvar <%= name %></h4>
+        <hr>
+        <ul class="mb-0">
+          <%% <%= name %>.errors.full_messages.each do |message| %>
+            <li><%%= message %></li>
+          <%% end %>
+        </ul>
+      </div>
     </div>
   <%% end %>
 
@@ -23,6 +25,16 @@
     <% if attr.type == :references %>
     # Replace :name for attribute correct
     <%%= form.select :<%= attr.name %>_id, <%= attr.name.classify %>.pluck(:name, :id), {}, class: 'form-control' %>  
+    <% elsif attr.type == :digest %>
+    <%%= form.password_field :<%= attr.name %>, class: 'form-control' %>
+    <% elsif attr.type == :date %>
+    <%%= form.date_field :<%= attr.name %>, class: 'form-control' %>
+    <% elsif attr.type == :datetime %>
+    <%%= form.datetime_field :<%= attr.name %>, class: 'form-control' %>
+    <% elsif attr.type == :integer %>
+    <%%= form.number_field :<%= attr.name %>, class: 'form-control' %>
+    <% elsif attr.type == :text %>
+    <%%= form.text_area :<%= attr.name %>, class: 'form-control' %>
     <% else %>
     <%%= form.text_field :<%= attr.name %>, class: 'form-control' %>
     <% end %>
