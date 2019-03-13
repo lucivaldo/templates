@@ -1,23 +1,23 @@
-<div class="card">
-	<div class="card-header">
-		<h4>Detalhe de <%= name %></h4>
-	</div>
+<div class="pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Detalhes de <%= name %></h1>
+</div>
 
-	<div class="card-body">
-		<table class="table">
-			<tbody>
-				<% attributes.each do |attr| %>
-				<% if attr.type != :digest %>
-				<tr>
-					<th><%= attr.name.humanize %></th>
-					<td><%%= @<%= name + '.' + attr.name %> %></td>
-				</tr>
+<div class="row">
+  <div class="col col-md-8">
+    <div class="table-responsive">
+      <table class="table">
+        <% attributes.each do |attr| %>
+					<% if attr.type != :digest %>
+					<tr>
+						<th><%= attr.name.humanize %></th>
+						<td><%%= @<%= name + '.' + attr.name %> %></td>
+					</tr>
+					<% end %>
 				<% end %>
-			<% end %>
-			</tbody>
-		</table>
+      </table>
 
-		<%%= link_to 'Editar', edit_<%= name %>_path(@<%= name %>), class: 'btn btn-info' %>
-		<%%= link_to 'Voltar', <%= plural_name %>_path, class: 'btn btn-warning' %>
-	</div>
+			<%%= link_to t(:edit), edit_<%= name %>_path(@<%= name %>), class: 'btn btn-sm btn-outline-secondary' %>
+			<%%= link_to t(:back), <%= plural_name %>_path, class: 'btn btn-sm btn-outline-secondary' %>
+    </div>
+  </div>
 </div>

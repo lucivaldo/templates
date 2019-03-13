@@ -64,7 +64,7 @@
   <% end %>
   <% end %>
   <div class="actions">
-    <%%= form.submit 'Salvar', class: 'btn btn-success' %>
-    <%%= link_to 'Voltar', <%= plural_name %>_path, class: 'btn btn-warning' %>
+    <%%= form.submit class: 'btn btn-sm btn-outline-secondary' %>
+    <%%= link_to t(:back), <%= plural_name %>_path, class: 'btn btn-sm btn-outline-secondary' %>
   </div>
 <%% end %>

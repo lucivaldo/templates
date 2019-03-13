@@ -1,11 +1,9 @@
-<div class="card">
-	<div class="card-header">
-		<div class="d-flex justify-content-between align-items-center">
-			<h4>Novo <%= name %></h4>
-		</div>
-	</div>
+<div class="pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h2">Novo <%= name %></h1>
+</div>
 
-	<div class="card-body">
-		<%%= render 'form', <%= name %>: @<%= name %> %>
-	</div>
+<div class="row">
+  <div class="col col-md-8">
+    <%%= render 'form', <%= name %>: @<%= name %> %>
+  </div>
 </div>
