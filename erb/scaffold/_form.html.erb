@@ -12,21 +12,22 @@
       </div>
     </div>
   <%% end %>
-  <% attributes.each do |attr| %>
-  <% if attr.type == :boolean %>
+
+  <%- attributes.each do |attr| -%>
+  <%- if attr.type == :boolean -%>
   <div class='form-group'>
     <div class="form-check">
       <%%= form.check_box :<%= attr.name %>, class: 'form-check-input' %>
       <%%= form.label :<%= attr.name %>, class: 'form-check-label' %>
     </div>
   </div>
-  <% elsif attr.type == :references %>
+  <%- elsif attr.type == :references -%>
   <div class='form-group'>
     <%%= form.label :<%= attr.name %> %>
     # Replace :name for attribute correct
     <%%= form.select :<%= attr.name %>_id, <%= attr.name.classify %>.pluck(:name, :id), {}, class: 'form-control' %>  
   </div>
-  <% elsif attr.type == :digest %>
+  <%- elsif attr.type == :digest -%>
   <div class='form-group'>
     <%%= form.label :<%= attr.name %> %>
     <%%= form.password_field :<%= attr.name %>, class: 'form-control' %>
@@ -36,33 +37,33 @@
     <%%= form.label :<%= attr.name %>_confirmation %>
     <%%= form.password_field :<%= attr.name %>_confirmation, class: 'form-control' %>
   </div>
-  <% elsif attr.type == :date %>
+  <%- elsif attr.type == :date -%>
   <div class='form-group'>
     <%%= form.label :<%= attr.name %> %>
     <%%= form.date_field :<%= attr.name %>, class: 'form-control' %>
   </div>
-  <% elsif attr.type == :datetime %>
+  <%- elsif attr.type == :datetime -%>
   <div class='form-group'>
     <%%= form.label :<%= attr.name %> %>
     <%%= form.datetime_field :<%= attr.name %>, class: 'form-control' %>
   </div>
-  <% elsif attr.type == :integer %>
+  <%- elsif attr.type == :integer -%>
   <div class='form-group'>
     <%%= form.label :<%= attr.name %> %>
     <%%= form.number_field :<%= attr.name %>, class: 'form-control' %>
   </div>
-  <% elsif attr.type == :text %>
+  <%- elsif attr.type == :text -%>
   <div class='form-group'>
     <%%= form.label :<%= attr.name %> %>
     <%%= form.text_area :<%= attr.name %>, class: 'form-control' %>
   </div>
-  <% else %>
+  <%- else -%>
   <div class='form-group'>
     <%%= form.label :<%= attr.name %> %>
     <%%= form.text_field :<%= attr.name %>, class: 'form-control' %>
   </div>
   <% end %>
-  <% end %>
+  <%- end -%>
   <div class="actions">
     <%%= form.submit class: 'btn btn-sm btn-outline-secondary' %>
     <%%= link_to t(:back), <%= plural_name %>_path, class: 'btn btn-sm btn-outline-secondary' %>

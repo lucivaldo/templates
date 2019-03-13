@@ -6,14 +6,14 @@
   <div class="col col-md-8">
     <div class="table-responsive">
       <table class="table">
-        <% attributes.each do |attr| %>
-					<% if attr.type != :digest %>
-					<tr>
-						<th><%= attr.name.humanize %></th>
-						<td><%%= @<%= name + '.' + attr.name %> %></td>
-					</tr>
-					<% end %>
-				<% end %>
+      <%- attributes.each do |attr| -%>
+			<%- if attr.type != :digest -%>
+				<tr>
+					<th><%= attr.name.humanize %></th>
+					<td><%%= @<%= name + '.' + attr.name %> %></td>
+				</tr>
+			<%- end -%>
+			<%- end -%>
       </table>
 
 			<%%= link_to t(:edit), edit_<%= name %>_path(@<%= name %>), class: 'btn btn-sm btn-outline-secondary' %>

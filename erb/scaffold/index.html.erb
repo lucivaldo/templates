@@ -10,9 +10,9 @@
   <table class="table">
     <thead>
       <tr>
-        <% attributes.each do |attr| %>
+        <%- attributes.each do |attr| -%>
         <th><%= attr.name.humanize %></th>
-        <% end %>
+        <%- end -%>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -20,9 +20,9 @@
     <tbody>
       <%% @<%= name.pluralize %>.each do |<%= name %>| %>
 			<tr>
-			<% attributes.each do |attr| %>
+			<%- attributes.each do |attr| -%>
 				<td><%%= <%= name %>.<%= attr.name %> %></td>
-			<% end %>
+			<%- end -%>
 				<td><%%= link_to t(:show), <%= name %> %></td>
 				<td><%%= link_to t(:edit), edit_<%= name %>_path(<%= name %>) %></td>
 				<td><%%= link_to t(:destroy), <%= name %>, method: :delete, data: { confirm: t(:confirm_message) } %></td>
