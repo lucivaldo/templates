@@ -1,0 +1,5 @@
+pt-BR:
+  confirm_message: Você tem certeza?
+  create_message: "%{name} criado com sucesso"
+  update_message: "%{name} atualizado com sucesso"
+  destroy_message: "%{name} excluído com sucesso"
